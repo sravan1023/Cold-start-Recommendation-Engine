@@ -1,0 +1,41 @@
+# ───────────────────────── core utilities ────────────────────────────
+typer[all]==0.9.0         # CLI framework (+rich, colorama, click, shell-completion)
+orjson==3.10.0            # ultra-fast JSON (stream parsing)
+PyYAML==6.0.1             # YAML configs
+tqdm==4.66.4              # progress bars
+
+# ───────────────────────── data wrangling ────────────────────────────
+pandas==2.2.2
+pyarrow==15.0.2           # parquet read/write engine
+numpy==1.26.4
+
+# ───────────────────────── deep-learning stack ───────────────────────
+# Adjust torch / torchvision / torchaudio versions & indexes
+# if you need a specific CUDA build (see: https://pytorch.org)
+torch==2.3.0
+torchvision==0.18.0
+torchaudio==2.3.0
+pytorch-lightning==2.2.4   # training loops, checkpointing
+transformers==4.41.1       # Book-tower & cross-encoder
+sentence-transformers==2.7.0  # SBERT convenience wrapper (future text features)
+
+# ───────────────────────── retrieval / ranking ───────────────────────
+faiss-cpu==1.8.0           # vector index (CPU build)
+scikit-learn==1.5.0        # LightGBM gets wrapped later, metrics, etc.
+
+# ───────────────────────── service layer (optional) ──────────────────
+fastapi==0.110.1
+uvicorn[standard]==0.29.0   # ASGI server with auto-reload
+grpcio==1.64.1              # (if you expose gRPC endpoints)
+
+# ───────────────────────── dev / testing extras ──────────────────────
+pytest==8.1.1
+black==24.4.2
+flake8==7.0.0
+mypy==1.10.0
+python-dotenv==1.0.1        # load .env in services / tasks
+
+# ───────────────────────── Windows notes ─────────────────────────────
+# • If `faiss-cpu` fails on Windows, install Microsoft’s wheel:
+#   pip install faiss-cpu-1.8.0-cp310-cp310-win_amd64.whl
+# • torch CUDA wheels →  pip install --index-url https://download.pytorch.org/whl/cu121 torch==2.3.0 torchvision==0.18.0 torchaudio==2.3.0
